@@ -59,11 +59,11 @@ public class HibernateRun {
         return result;
     }
 
-    public static List findByName(SessionFactory sf, String name) {
+    public static List<Candidate> findByName(SessionFactory sf, String name) {
         Session session = sf.openSession();
         Query query = session.createQuery("from Candidate c where c.name = :fName");
         query.setParameter("fName", name);
-        List result =  query.getResultList();
+        List<Candidate> result =  query.getResultList();
         session.close();
         return result;
     }
