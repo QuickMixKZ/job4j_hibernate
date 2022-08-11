@@ -1,4 +1,4 @@
-package ru.job4j.model;
+package ru.job4j.model.onetomany;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -11,6 +11,10 @@ public class CarModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private CarBrand brand;
 
     public CarModel() {
     }
@@ -33,6 +37,14 @@ public class CarModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public CarBrand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(CarBrand brand) {
+        this.brand = brand;
     }
 
     @Override
@@ -58,6 +70,7 @@ public class CarModel {
         return "CarModel{"
                 + "id=" + id
                 + ", name='" + name + '\''
+                + ", brand=" + brand.getName()
                 + '}';
     }
 }

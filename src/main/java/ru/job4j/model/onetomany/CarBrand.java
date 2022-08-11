@@ -1,4 +1,4 @@
-package ru.job4j.model;
+package ru.job4j.model.onetomany;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class CarBrand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "brand")
     private List<CarModel> models = new ArrayList<>();
 
     public CarBrand() {
