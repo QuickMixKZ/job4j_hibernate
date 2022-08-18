@@ -4,7 +4,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import ru.job4j.model.Candidate;
+import ru.job4j.model.selectfetch.Candidate;
 
 import javax.persistence.Query;
 import java.util.List;
@@ -44,7 +44,7 @@ public class HibernateRun {
     public static List<Candidate> findAll(SessionFactory sf) {
         Session session = sf.openSession();
         session.beginTransaction();
-        List result = session.createQuery("from ru.job4j.model.Candidate").list();
+        List result = session.createQuery("from ru.job4j.model.selectfetch.Candidate").list();
         session.getTransaction().commit();
         session.close();
         return result;

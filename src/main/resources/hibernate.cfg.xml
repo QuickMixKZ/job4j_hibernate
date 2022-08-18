@@ -17,10 +17,13 @@
         <property name="format_sql">true</property>
         <property name="use_sql_comments">true</property>
 
-        <mapping class="ru.job4j.model.Candidate" />
+        <mapping class="ru.job4j.model.selectfetch.Candidate" />
         <mapping class="ru.job4j.model.onetomany.CarModel" />
         <mapping class="ru.job4j.model.onetomany.CarBrand" />
         <mapping class="ru.job4j.model.manytomany.Book" />
         <mapping class="ru.job4j.model.manytomany.Author" />
+        <mapping class="ru.job4j.model.selectfetch.Vacancy" />
+        <mapping class="ru.job4j.model.selectfetch.Candidate" />
+        <mapping class="ru.job4j.model.selectfetch.VacanciesBase" />
     </session-factory>
 </hibernate-configuration>

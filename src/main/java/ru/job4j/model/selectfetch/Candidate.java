@@ -1,4 +1,4 @@
-package ru.job4j.model;
+package ru.job4j.model.selectfetch;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -14,10 +14,21 @@ public class Candidate {
     private int experience;
     private int salary;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "base_id")
+    private VacanciesBase base;
+
     public Candidate(String name, int experience, int salary) {
         this.name = name;
         this.experience = experience;
         this.salary = salary;
+    }
+
+    public Candidate(String name, int experience, int salary, VacanciesBase base) {
+        this.name = name;
+        this.experience = experience;
+        this.salary = salary;
+        this.base = base;
     }
 
     public Candidate() {
