@@ -3,6 +3,7 @@ package ru.job4j.integration;
 import static org.junit.Assert.*;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,6 +36,11 @@ public class OrdersStoreTest {
             e.printStackTrace();
         }
         pool.getConnection().prepareStatement(builder.toString()).executeUpdate();
+    }
+
+    @After
+    public void cleanUp() throws SQLException {
+        pool.getConnection().prepareStatement("DROP TABLE IF EXISTS orders").executeUpdate();
     }
 
     @Test
